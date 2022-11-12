@@ -1,0 +1,43 @@
+{%  extends 'administracion/base.html' %}
+
+{% block title %} Correspondencia {% endblock %}
+
+{% block header %} Residencia Comunidad {% endblock %}
+
+{% block content %}
+    <h3>¡Revise su Correspondencia!</h3>
+    <form id="residencia" method="get">
+        <label for="featured">Seleccione su residencia: </label>
+        <select name="featured" class="form-select" aria-label="Default select example">
+            <option value=''>Sin filtro</option>
+            {% for residencia in residencias %}
+            <option value="{{residencia.id}}">N°{{residencia.id}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Mostrar"/>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">N° Residencia</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha de recepcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for correspondencia in correspondencias %}
+
+                <tr>
+                    <td scope="col">#{{correspondencia.residencia.id}}</td>
+                    <td scope="col">{{correspondencia.residencia.calle}} N°{{correspondencia.residencia.numero}}</td>
+                    <td scope="col">{{correspondencia.tipo}}</td>
+                    <td scope="col">{{correspondencia.estado}}</td>
+                    <td scope="col">{{correspondencia.fecha_recepcion}}</td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

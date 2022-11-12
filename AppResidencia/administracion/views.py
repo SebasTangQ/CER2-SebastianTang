@@ -9,9 +9,6 @@ from django.views.generic import ListView
 def home(request):
     return render(request, 'administracion/home.html')
 
-def contacto(request):
-    return render(request, 'administracion/contacto.html')
-
 def correspondencia(request, template_name='administracion/correspondencia.html'):
     if request.GET.get('featured'):
         opcion = request.GET.get('featured')
